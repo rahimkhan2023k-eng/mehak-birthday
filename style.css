@@ -1,225 +1,192 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
-}
+// =========================
+// PROJECT MAHI ❤️
+// script.js
+// =========================
 
-body{
+// Loading Screen
+window.addEventListener("load", () => {
 
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-overflow:hidden;
+    setTimeout(() => {
 
-background:linear-gradient(-45deg,#120018,#3f0037,#ff4d88,#ff85b3);
-background-size:400% 400%;
-animation:bg 12s ease infinite;
+        document.getElementById("loading-screen").style.display = "none";
+        document.getElementById("main-page").style.display = "block";
 
-}
+        startTyping();
 
-@keyframes bg{
+    },3000);
 
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+});
 
-}
+// =====================
+// Typing Effect
+// =====================
 
-.container{
+const text = `Today isn't just another day...
 
-width:90%;
-max-width:700px;
+Today is the day someone amazing was born.
 
-padding:40px;
+Happy Birthday Mahi ❤️`;
 
-text-align:center;
+let i = 0;
 
-background:rgba(255,255,255,.12);
+function startTyping(){
 
-backdrop-filter:blur(12px);
+    let area = document.getElementById("typing");
 
-border-radius:25px;
+    let timer = setInterval(()=>{
 
-box-shadow:0 0 40px rgba(255,0,120,.4);
+        if(i < text.length){
 
-z-index:10;
+            area.innerHTML += text.charAt(i);
 
-}
+            i++;
 
-.title{
+        }
 
-font-size:55px;
-color:white;
+        else{
 
-text-shadow:
-0 0 10px #ff4da6,
-0 0 20px #ff4da6,
-0 0 40px #ff4da6;
+            clearInterval(timer);
 
-margin-bottom:20px;
+        }
+
+    },45);
 
 }
 
-.title span{
+// =====================
+// Hearts Rain
+// =====================
 
-font-size:65px;
+function createHeart(){
 
-color:#ffd6ea;
+let heart=document.createElement("div");
 
-}
+heart.className="heart";
 
-#typing{
+heart.innerHTML="❤️";
 
-color:white;
+heart.style.left=Math.random()*100+"vw";
 
-font-size:22px;
+heart.style.fontSize=(15+Math.random()*30)+"px";
 
-line-height:38px;
+heart.style.animationDuration=(4+Math.random()*4)+"s";
 
-min-height:120px;
+document.body.appendChild(heart);
 
-margin-bottom:30px;
+setTimeout(()=>{
 
-}
+heart.remove();
 
-button{
-
-padding:18px 45px;
-
-font-size:20px;
-
-border:none;
-
-border-radius:50px;
-
-background:#ff2e7a;
-
-color:white;
-
-cursor:pointer;
-
-transition:.3s;
-
-box-shadow:0 0 20px hotpink;
+},8000);
 
 }
 
-button:hover{
+setInterval(createHeart,250);
 
-transform:scale(1.08);
+// =====================
+// Stars
+// =====================
 
-background:#ff0066;
+for(let i=0;i<120;i++){
 
-}
+let star=document.createElement("div");
 
-#letter{
+star.className="star";
 
-display:none;
+star.style.left=Math.random()*100+"vw";
 
-margin-top:35px;
+star.style.top=Math.random()*100+"vh";
 
-padding:25px;
+star.style.animationDelay=Math.random()*3+"s";
 
-background:white;
-
-border-radius:20px;
-
-color:#333;
-
-font-size:19px;
-
-line-height:34px;
-
-animation:fade .8s;
+document.body.appendChild(star);
 
 }
 
-@keyframes fade{
+// =====================
+// Gift Button
+// =====================
 
-from{
+const gift=document.getElementById("giftBtn");
 
-opacity:0;
-transform:translateY(40px);
+gift.onclick=()=>{
 
-}
+document.getElementById("letter").style.display="block";
 
-to{
+document.getElementById("made").style.display="block";
 
-opacity:1;
-transform:translateY(0);
+document.getElementById("music").play();
 
-}
+fireworks();
 
-}
+};
 
-#made{
+// =====================
+// Fireworks
+// =====================
 
-display:none;
+function fireworks(){
 
-margin-top:40px;
+for(let i=0;i<150;i++){
 
-font-size:40px;
+let dot=document.createElement("div");
 
-color:#fff;
+dot.style.position="fixed";
 
-text-shadow:
+dot.style.width="8px";
 
-0 0 15px hotpink,
+dot.style.height="8px";
 
-0 0 35px deeppink;
+dot.style.borderRadius="50%";
 
-animation:pulse 1.5s infinite;
+dot.style.left="50%";
 
-}
+dot.style.top="50%";
 
-@keyframes pulse{
+dot.style.background=`hsl(${Math.random()*360},100%,60%)`;
 
-50%{
+dot.style.transition="all 1.5s ease";
 
-transform:scale(1.08);
+document.body.appendChild(dot);
+
+setTimeout(()=>{
+
+dot.style.transform=`translate(${(Math.random()-.5)*900}px,${(Math.random()-.5)*700}px)`;
+
+dot.style.opacity=0;
+
+},20);
+
+setTimeout(()=>{
+
+dot.remove();
+
+},1800);
 
 }
 
 }
 
-/* Floating Hearts */
+// =====================
+// Secret Easter Egg
+// =====================
 
-.heart{
+let secret="";
 
-position:absolute;
+document.addEventListener("keydown",(e)=>{
 
-color:#ff4d88;
+secret+=e.key.toUpperCase();
 
-animation:float linear forwards;
+if(secret.length>4){
 
-user-select:none;
-
-}
-
-@keyframes float{
-
-0%{
-
-transform:translateY(100vh) scale(.5);
-
-opacity:0;
+secret=secret.slice(-4);
 
 }
 
-20%{
+if(secret==="MAHI"){
 
-opacity:1;
-
-}
-
-100%{
-
-transform:translateY(-120vh) scale(1.5);
-
-opacity:0;
+alert("❤️ You found the hidden message!\n\nMay your smile always stay this beautiful. Happy Birthday Mahi ❤️");
 
 }
 
-}
+});
