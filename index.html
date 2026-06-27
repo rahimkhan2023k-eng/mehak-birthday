@@ -1,111 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>For Mehak ❤️</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Mehak ❤️</title>
 
-<style>
-body {
-  margin: 0;
-  height: 100vh;
-  background: linear-gradient(135deg, #ffdee9, #b5fffc);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Arial;
-  overflow: hidden;
-}
-
-.card {
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  z-index: 2;
-}
-
-h1 {
-  color: #ff4d6d;
-}
-
-#msg {
-  min-height: 50px;
-  margin-top: 10px;
-}
-
-button {
-  margin-top: 15px;
-  padding: 10px 20px;
-  border: none;
-  background: #ff4d6d;
-  color: white;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-/* Floating hearts */
-.heart {
-  position: absolute;
-  color: red;
-  animation: float 6s linear infinite;
-}
-
-@keyframes float {
-  0% { transform: translateY(100vh); opacity: 0; }
-  50% { opacity: 1; }
-  100% { transform: translateY(-10vh); opacity: 0; }
-}
-</style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- Background Music -->
-<audio autoplay loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
+<div id="hearts"></div>
 
-<div class="card">
-  <h1>🎂 Happy Birthday Mehak 🎂</h1>
-  <div id="msg"></div>
-  <button onclick="reveal()">Click for Surprise ❤️</button>
+<div class="container">
+
+<h1 class="title">
+Happy Birthday
+<br>
+<span>Mehak ❤️</span>
+</h1>
+
+<p id="typing"></p>
+
+<button id="giftBtn">
+🎁 Open Your Gift
+</button>
+
+<div id="letter">
+
+<h2>For You, Mahi ❤️</h2>
+
+<p>
+
+On your special day...
+
+I just want you to know...
+
+You make ordinary days feel special.
+
+Your smile has a way of making everything brighter.
+
+May Allah bless you with endless happiness,
+success and beautiful memories.
+
+Stay exactly the way you are.
+
+Happy Birthday ❤️
+
+</p>
+
 </div>
 
-<script>
-// Typing effect
-let text = "Mahi, you are not just my best friend... you are my favorite feeling ❤️";
-let i = 0;
-function type() {
-  if(i < text.length){
-    document.getElementById("msg").innerHTML += text.charAt(i);
-    i++;
-    setTimeout(type, 50);
-  }
-}
-type();
+<div id="made">
+Made Specially For Mahi ❤️
+</div>
 
-// Surprise button
-function reveal(){
-  alert("Happy Birthday Mehak ❤️✨ You are special!");
-}
+</div>
 
-// Floating hearts
-function createHeart(){
-  let heart = document.createElement("div");
-  heart.classList.add("heart");
-  heart.innerHTML = "❤️";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = Math.random() * 20 + 10 + "px";
-  document.body.appendChild(heart);
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
 
-  setTimeout(() => {
-    heart.remove();
-  }, 6000);
-}
-
-setInterval(createHeart, 300);
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
