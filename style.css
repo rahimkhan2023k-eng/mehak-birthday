@@ -1,0 +1,326 @@
+/* =========================
+   PROJECT MAHI ❤️
+   style.css
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#090014;
+    overflow-x:hidden;
+    color:white;
+}
+
+/* Animated Galaxy Background */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at top,#ff4da6 0%,transparent 35%),
+    radial-gradient(circle at bottom,#7b2ff7 0%,transparent 35%),
+    linear-gradient(135deg,#090014,#13001f,#1a0030);
+    z-index:-3;
+}
+
+/* Stars */
+
+#stars{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+
+from{
+opacity:.2;
+transform:scale(1);
+}
+
+to{
+opacity:1;
+transform:scale(2);
+box-shadow:0 0 10px white;
+}
+
+}
+
+/* Hearts */
+
+.heart{
+
+position:fixed;
+
+top:-30px;
+
+font-size:20px;
+
+animation:fall linear forwards;
+
+pointer-events:none;
+
+z-index:-1;
+
+}
+
+@keyframes fall{
+
+0%{
+
+transform:translateY(-5vh) rotate(0);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(110vh) rotate(360deg);
+
+opacity:0;
+
+}
+
+}
+
+/* Loading */
+
+#loading{
+
+height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+.loader{
+
+width:300px;
+
+height:10px;
+
+background:#333;
+
+border-radius:30px;
+
+overflow:hidden;
+
+}
+
+.progress{
+
+width:0%;
+
+height:100%;
+
+background:#ff4da6;
+
+animation:load 3s linear forwards;
+
+}
+
+@keyframes load{
+
+100%{
+
+width:100%;
+
+}
+
+}
+
+/* Main */
+
+#home{
+
+display:none;
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:40px;
+
+}
+
+/* Glass Card */
+
+.glass{
+
+width:100%;
+
+max-width:700px;
+
+padding:40px;
+
+border-radius:25px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(20px);
+
+box-shadow:
+
+0 0 40px rgba(255,0,140,.4);
+
+text-align:center;
+
+}
+
+/* Heading */
+
+.glass h1{
+
+font-size:60px;
+
+line-height:1.2;
+
+text-shadow:
+
+0 0 15px hotpink;
+
+}
+
+.glass span{
+
+display:block;
+
+font-size:70px;
+
+color:#ff7ac6;
+
+}
+
+/* Typing */
+
+#typing{
+
+margin-top:25px;
+
+font-size:22px;
+
+line-height:38px;
+
+min-height:100px;
+
+}
+
+/* Button */
+
+#gift{
+
+margin-top:25px;
+
+padding:16px 38px;
+
+border:none;
+
+border-radius:50px;
+
+background:#ff2e7a;
+
+color:white;
+
+font-size:20px;
+
+cursor:pointer;
+
+transition:.3s;
+
+box-shadow:0 0 25px #ff2e7a;
+
+}
+
+#gift:hover{
+
+transform:scale(1.08);
+
+}
+
+/* Letter */
+
+#letter{
+
+display:none;
+
+padding:60px 20px;
+
+}
+
+.letter-box{
+
+max-width:800px;
+
+margin:auto;
+
+background:white;
+
+color:#333;
+
+padding:35px;
+
+border-radius:20px;
+
+line-height:34px;
+
+font-size:19px;
+
+box-shadow:0 0 30px hotpink;
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.glass h1{
+
+font-size:40px;
+
+}
+
+.glass span{
+
+font-size:48px;
+
+}
+
+#typing{
+
+font-size:18px;
+
+}
+
+}
