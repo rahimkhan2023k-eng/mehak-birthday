@@ -1,113 +1,208 @@
-// Typing Text
-const message =
-"Every heartbeat carries a wish for your happiness... ❤️";
-
-let i = 0;
-
-function typing() {
-
-    if (i < message.length) {
-
-        document.getElementById("typing").innerHTML += message.charAt(i);
-
-        i++;
-
-        setTimeout(typing, 60);
-
-    }
-
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
-typing();
-
-
-// Floating Hearts
-
-function createHeart(){
-
-const heart=document.createElement("div");
-
-heart.className="heart";
-
-heart.innerHTML="❤️";
-
-heart.style.left=Math.random()*100+"vw";
-
-heart.style.fontSize=(20+Math.random()*30)+"px";
-
-heart.style.animationDuration=(4+Math.random()*4)+"s";
-
-document.body.appendChild(heart);
-
-setTimeout(()=>{
-
-heart.remove();
-
-},7000);
-
+body{
+background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+background-size:400% 400%;
+animation:bg 12s ease infinite;
+min-height:100vh;
+overflow-x:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:40px;
 }
 
-setInterval(createHeart,250);
-
-
-// Gift Button
-
-const btn=document.getElementById("giftBtn");
-
-btn.onclick=function(){
-
-document.getElementById("letter").style.display="block";
-
-document.getElementById("made").style.display="block";
-
-document.getElementById("music").play();
-
-fireworks();
-
+@keyframes bg{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
 
+#loading-screen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#090014;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
 
-// Fireworks Effect
+#loading-text{
+color:#fff;
+font-size:40px;
+margin-bottom:20px;
+}
 
-function fireworks(){
+.progress{
+width:300px;
+height:12px;
+background:#333;
+border-radius:30px;
+overflow:hidden;
+}
 
-for(let i=0;i<120;i++){
+.bar{
+width:0%;
+height:100%;
+background:#ff4da6;
+animation:load 3s linear forwards;
+}
 
-let spark=document.createElement("div");
+@keyframes load{
+to{
+width:100%;
+}
+}
 
-spark.style.position="absolute";
+#main-page{
+display:none;
+width:100%;
+}
 
-spark.style.width="6px";
+.glass{
+max-width:800px;
+margin:auto;
+padding:40px;
+border-radius:25px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(18px);
+box-shadow:0 0 30px rgba(255,20,147,.35);
+text-align:center;
+}
 
-spark.style.height="6px";
+.title{
+font-size:60px;
+color:white;
+line-height:1.2;
+text-shadow:0 0 20px hotpink;
+}
 
-spark.style.borderRadius="50%";
+.title span{
+color:#ff80bf;
+font-size:70px;
+}
 
-spark.style.background=`hsl(${Math.random()*360},100%,60%)`;
+#typing{
+margin-top:25px;
+font-size:22px;
+color:white;
+min-height:80px;
+line-height:36px;
+}
 
-spark.style.left="50%";
+#giftBtn{
+margin-top:30px;
+padding:16px 40px;
+font-size:20px;
+border:none;
+border-radius:50px;
+background:#ff2e7a;
+color:white;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 0 25px #ff2e7a;
+}
 
-spark.style.top="45%";
+#giftBtn:hover{
+transform:scale(1.08);
+}
 
-spark.style.transition="all 1.5s ease";
+#letter{
+display:none;
+margin-top:35px;
+padding:30px;
+background:white;
+color:#333;
+border-radius:20px;
+line-height:32px;
+font-size:18px;
+}
 
-document.body.appendChild(spark);
+#made{
+display:none;
+margin-top:35px;
+font-size:34px;
+color:white;
+text-shadow:0 0 20px hotpink;
+animation:pulse 1.5s infinite;
+}
 
-setTimeout(()=>{
+@keyframes pulse{
+50%{
+transform:scale(1.08);
+}
+}
 
-spark.style.transform=`translate(${(Math.random()-0.5)*900}px,
-${(Math.random()-0.5)*700}px)`;
+/* Hearts */
 
-spark.style.opacity=0;
+.heart{
+position:fixed;
+top:-20px;
+font-size:20px;
+pointer-events:none;
+animation:fall linear forwards;
+}
 
-},50);
+@keyframes fall{
+0%{
+transform:translateY(-10vh) rotate(0deg);
+opacity:1;
+}
 
-setTimeout(()=>{
+100%{
+transform:translateY(110vh) rotate(360deg);
+opacity:0;
+}
+}
 
-spark.remove();
+/* Stars */
 
-},1800);
+.star{
+position:fixed;
+width:2px;
+height:2px;
+background:white;
+border-radius:50%;
+animation:twinkle 2s infinite alternate;
+}
 
+@keyframes twinkle{
+from{
+opacity:.2;
+}
+
+to{
+opacity:1;
+box-shadow:0 0 10px white;
+}
+}
+
+@media(max-width:768px){
+
+.title{
+font-size:42px;
+}
+
+.title span{
+font-size:48px;
+}
+
+.glass{
+padding:25px;
+}
+
+#typing{
+font-size:18px;
 }
 
 }
