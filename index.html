@@ -1,90 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Mahi ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Mehak ❤️</title>
 
-    <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#090909,#1b1b2f,#2c003e);
+overflow:hidden;
+color:white;
+}
+
+.container{
+width:90%;
+max-width:700px;
+text-align:center;
+padding:40px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(15px);
+border-radius:25px;
+box-shadow:0 0 40px rgba(255,0,100,.3);
+z-index:2;
+animation:fade 2s;
+}
+
+h1{
+font-size:52px;
+font-family:'Dancing Script',cursive;
+color:#ff6fa5;
+margin-bottom:20px;
+}
+
+h2{
+font-size:22px;
+margin-bottom:25px;
+color:#fff;
+}
+
+p{
+font-size:18px;
+line-height:1.9;
+color:#eee;
+}
+
+button{
+margin-top:35px;
+padding:15px 35px;
+font-size:18px;
+border:none;
+border-radius:40px;
+background:#ff4f8b;
+color:white;
+cursor:pointer;
+transition:.4s;
+}
+
+button:hover{
+transform:scale(1.08);
+background:#ff256d;
+}
+
+#surprise{
+margin-top:30px;
+display:none;
+animation:fade 1.5s;
+}
+
+#surprise h3{
+font-size:34px;
+color:#ffd166;
+margin-bottom:15px;
+}
+
+#surprise p{
+font-size:20px;
+}
+
+.heart{
+position:absolute;
+bottom:-50px;
+color:#ff5b9d;
+font-size:25px;
+animation:float linear infinite;
+}
+
+@keyframes float{
+0%{
+transform:translateY(0) scale(1);
+opacity:1;
+}
+100%{
+transform:translateY(-120vh) scale(2);
+opacity:0;
+}
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+footer{
+margin-top:30px;
+font-size:15px;
+color:#ccc;
+}
+
+</style>
+
 </head>
-
 <body>
 
-<!-- Loading Screen -->
+<div class="container">
 
-<div id="loading">
+<h1>Happy Birthday ❤️</h1>
 
-    <h1>Loading...</h1>
+<h2>Dear Mehak 🌸</h2>
 
-    <div class="loader">
+<p>
+Some people walk into our lives quietly,
+yet leave the most beautiful impact.
 
-        <div class="progress"></div>
+<br><br>
 
-    </div>
+You are one of those rare souls.
 
-</div>
+<br><br>
 
-<!-- Main Website -->
+May Allah bless you with endless happiness,
+success, peace and beautiful memories.
 
-<section id="home">
+Keep smiling,
+keep shining,
+and never stop being the wonderful person you are.
 
-    <div class="glass">
+<br><br>
 
-        <h1>
+<b>Happy Birthday, Mahi. 🎂❤️</b>
+</p>
 
-            Happy Birthday
+<button onclick="showWish()">
+🎁 Open Surprise
+</button>
 
-            <span>Mehak ❤️</span>
+<div id="surprise">
 
-        </h1>
-
-        <p id="typing"></p>
-
-        <button id="gift">
-
-            🎁 Open Your Surprise
-
-        </button>
-
-    </div>
-
-</section>
-
-<!-- Letter -->
-
-<section id="letter">
-
-<div class="letter-box">
-
-<h2>Dear Mahi ❤️</h2>
+<h3>💖</h3>
 
 <p>
 
-Today isn't just another day.
+If I could give you just one gift today...
 
-Today is the day someone amazing was born.
+It would be the chance to see yourself through my eyes,
+because then you'd know
+how truly special you are.
 
-Thank you for bringing happiness wherever you go.
+<br><br>
 
-May Allah always keep you smiling.
+May every smile you share return to you a thousand times.
 
-Happy Birthday ❤️
+Happy Birthday, Beautiful ❤️
 
 </p>
 
 </div>
 
-</section>
+<footer>
+Made with ❤️ Especially For Mahi
+</footer>
 
-<audio id="music" loop>
+</div>
 
-<source src="music.mp3" type="audio/mpeg">
+<script>
 
-</audio>
+function showWish(){
+document.getElementById("surprise").style.display="block";
+}
 
-<script src="script.js"></script>
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.animationDuration=(4+Math.random()*4)+"s";
+
+heart.style.fontSize=(15+Math.random()*30)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},8000);
+
+}
+
+setInterval(createHeart,300);
+
+</script>
 
 </body>
 </html>
